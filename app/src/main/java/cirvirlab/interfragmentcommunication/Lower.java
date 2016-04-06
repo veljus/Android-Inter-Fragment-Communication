@@ -14,6 +14,7 @@ import org.w3c.dom.Text;
 
 public class Lower extends Fragment {
     TextView text;
+    String takenData;
 
     public Lower() {
         // Required empty public constructor
@@ -22,6 +23,16 @@ public class Lower extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lower, container, false);
+        if(savedInstanceState==null)
+        {
+
+        }
+        else
+        {
+            takenData=savedInstanceState.getString("text");
+            TextView localText = (TextView)view.findViewById(R.id.textView);
+            localText.setText(takenData);
+        }
         return view;
     }
     public void onActivityCreated(Bundle savedInstanceState){

@@ -17,6 +17,17 @@ public class Upper extends Fragment implements View.OnClickListener {
     public Upper() {
         // Required empty public constructor
     }
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        if(savedInstanceState==null)
+        {
+            count = 0;
+        }
+        else
+        {
+            count = savedInstanceState.getInt("counter",0);
+        }
+    }
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -28,6 +39,10 @@ public class Upper extends Fragment implements View.OnClickListener {
         comm = (Comm)getActivity();
         button = (Button)getActivity().findViewById(R.id.button);
         button.setOnClickListener(this);
+    }
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putInt("counter",count);
     }
     public void onClick(View v) {
         count++;
